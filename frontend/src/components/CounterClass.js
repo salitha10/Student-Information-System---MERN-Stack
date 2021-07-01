@@ -23,8 +23,6 @@ class CounterClass extends React.Component {
     }
 
 
-
-
     //Render elements
     render(){
         return (
