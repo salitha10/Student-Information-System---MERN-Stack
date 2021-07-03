@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom' 
 
 function NavHeader(){
 
@@ -13,16 +14,14 @@ function NavHeader(){
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <Link to ="/" className="nav-link">Home</Link>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Create Student</a>
+                <Link to ="/add" className="nav-link" >Create Student</Link>
             </li>
             </ul>
         </div>
         </nav>
-
-
     )
 }
 

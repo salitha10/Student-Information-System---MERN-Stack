@@ -21,6 +21,11 @@ export default function AddStudent(){
 
        axios.post('http://localhost:5000/student/add', newStudent).then(()=>{
            alert('Student added');
+           setName("");
+           setAge("");
+           setGender("");
+           setAddress("");
+
         }).catch((err) =>{
             alert('Insert Failed');
         });
