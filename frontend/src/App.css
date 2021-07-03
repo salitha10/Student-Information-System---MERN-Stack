@@ -42,3 +42,11 @@
     transform: rotate(360deg);
   }
 }
+
+.horizontal{
+  float: left;
+}
+
+.horizontal  *{
+  display: inline-block;
+}

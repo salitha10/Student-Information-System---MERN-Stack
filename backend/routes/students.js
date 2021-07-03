@@ -109,7 +109,7 @@ router.route("/get/:id").get(async (req, res) => {
 
     //Get data from database
     await student.findById(id).then((data) =>{
-        res.status(200).send({user:data})
+        res.status(200).send({data})
     }).catch((err) =>{
         console.log(`Error: ${err}`);
         res.status(500).send({status: "Error getting data"});

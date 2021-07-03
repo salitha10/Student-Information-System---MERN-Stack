@@ -1,8 +1,35 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import {useParams} from "react-router-dom";
 
 export default function AddStudent(){
  
+    //Get id from the url
+    let {id} = useParams();
+    console.log(id);
+
+        //Data
+        const [student, setStudent] = useState([]);
+
+        useEffect(()=>{
+    
+            //Get data
+            const getStudent = () =>{
+                axios.get("http://localhost:5000/student/get/"+id).then((res)=>{
+                    setStudent(res.data);
+                }).catch((err)=>{
+                    alert('Error fetching data');
+                });
+            }
+    
+            getStudent();
+    
+        }, []);
+
+
+        console.log(student);
+
+    //Initial values
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
     const [gender, setGender] = useState("");
@@ -18,8 +45,9 @@ export default function AddStudent(){
             gender,
             address
         }
-
-       axios.post('http://localhost:5000/student/add', newStudent).then(()=>{
+    
+        //Send data
+        axios.put('http://localhost:5000/student/update/'+id, newStudent).then(()=>{
            alert('Student added');
            window.location = "/";
 
@@ -28,15 +56,17 @@ export default function AddStudent(){
         });
 }
 
-    return(
+
+return(
 
 <div className="container">
 
 <div className="card" style={{padding:"20px" }}>
+    
     <form onSubmit={sendData}>
         <div className="form-group">
             <label htmlFor="name">Student Name</label>
-            <input type="text" className="form-control" id="name" placeholder="Enter Name"
+        <input type="text" className="form-control" id="name" placeholder="Enter Name" value={name}
             
             onChange={(e)=>{
                 setName(e.target.value)
@@ -77,9 +107,10 @@ export default function AddStudent(){
             
             ></input>
         </div>
-            
         <button type="submit" className="btn btn-primary">Submit</button>
+
     </form>
+    
     </div>
 </div>
 
