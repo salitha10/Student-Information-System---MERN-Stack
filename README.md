@@ -5,7 +5,7 @@ This contains all CRUD operations.
 
 Run app - 
 
-  Fontend:
+  Frontend:
 
   npm start
 
