@@ -51,6 +51,28 @@ router.route("/").get((req, res)=>{
 });
 
 
+
+/*
+
+//View
+router.route("/get/:id").get((req, res)=>{
+
+    console.log(id);
+
+    //Get all student data from databse
+    student.findById().then((data)=>{
+
+        //Send data as json
+        res.json(data);
+
+    }).catch((err)=>{
+        console.log(`Error: ${err}`);
+    })
+});
+
+*/
+
+
 //Update
 router.route("/update/:id").put(async (req, res)=>{
 
@@ -101,6 +123,7 @@ router.route("/delete/:id").delete(async (req, res) => {
 });
 
 
+
 //Get only one student data
 router.route("/get/:id").get(async (req, res) => {
 
@@ -109,7 +132,7 @@ router.route("/get/:id").get(async (req, res) => {
 
     //Get data from database
     await student.findById(id).then((data) =>{
-        res.status(200).send({data})
+        res.status(200).send({user:data})
     }).catch((err) =>{
         console.log(`Error: ${err}`);
         res.status(500).send({status: "Error getting data"});
