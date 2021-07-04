@@ -64,9 +64,9 @@ export default function AllStudents(){
 
                 <td>
                 <div  className="horizontal">
-                <Link to ={`/update/${student._id}`} className="nav-link">
-                <button type="button" className="btn btn-primary">Edit
-                </button></Link>
+                <a href={`/update/${student._id}`}>
+                <button type="button" className="btn btn-primary" style={{marginRight: "20px"}}>Edit
+                </button></a>
                 <button type="button" className="btn btn-danger" id={student._id} onClick={deleteStudent}>Delete</button>
                 </div>
                 </td>
